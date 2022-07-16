@@ -14,18 +14,20 @@ test("generate a clay css with a color and a shadow", () => {
     insetShadowColorSecondary: "#fca5a5",
   }
   const medium = {
-    outsetShadow: "8px 8px 16px rgba(0 ,0, 0, .25)",
-    insetShadowPrimary: "inset -8px -8px 32px",
-    insetShadowSecondary: "inset 8px 8px 16px",
-    insetShadowModifier: "inset -2px -2px 4px #fafafa",
+    name: "medium",
+    acronym: "md",
+    outset: "8px 8px 16px rgba(0, 0, 0, .25)",
+    insetPrimary: "inset -8px -8px 32px",
+    insetSecondary: "inset 8px 8px 16px",
+    insetModifier: "inset -2px -2px 4px #fafafa",
   }
   const aimedClayCss = {
     [".clay-md-red"]: {
       backgroundColor: "#f87171",
-      boxShadow: `8px 8px 16px rgba(0 ,0, 0, .25),inset -8px -8px 32px #ef4444,inset 8px 8px 16px #fca5a5,inset -2px -2px 4px #fafafa`,
+      boxShadow: `8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #ef4444,inset 8px 8px 16px #fca5a5,inset -2px -2px 4px #fafafa`,
     },
   }
-  expect(generateClayCss(red, "medium", medium)).toEqual(aimedClayCss)
+  expect(generateClayCss(red, medium)).toEqual(aimedClayCss)
 })
 
 test("generate clay css with colors and shadows", ({ expect }) => {

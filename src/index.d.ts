@@ -6,21 +6,17 @@ interface Color {
 }
 
 interface Shadow {
-  outsetShadow: string
-  insetShadowPrimary: string
-  insetShadowSecondary: string
-  insetShadowModifier: string
-}
-
-interface Shadows {
-  large?: Shadow
-  medium?: Shadow
-  small?: Shadow
+  name: string
+  acronym?: string
+  outset: string
+  insetPrimary: string
+  insetSecondary: string
+  insetModifier: string
 }
 
 interface Clay {
   colors: Color[]
-  shadows: Shadows
+  shadows: Shadow[]
 }
 
 interface ClayCss {

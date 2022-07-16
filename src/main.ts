@@ -10,20 +10,24 @@ export const themeWithClay: { clay: Clay } = {
         insetShadowColorSecondary: "#fca5a5",
       },
     ],
-    shadows: {
-      medium: {
-        outsetShadow: "8px 8px 16px rgba(0 ,0, 0, .25)",
-        insetShadowPrimary: "inset -8px -8px 32px",
-        insetShadowSecondary: "inset 8px 8px 16px",
-        insetShadowModifier: "inset -2px -2px 4px #fafafa",
+    shadows: [
+      {
+        name: "medium",
+        acronym: "md",
+        outset: "8px 8px 16px rgba(0, 0, 0, .25)",
+        insetPrimary: "inset -8px -8px 32px",
+        insetSecondary: "inset 8px 8px 16px",
+        insetModifier: "inset -2px -2px 4px #fafafa",
       },
-      small: {
-        outsetShadow: "4px 4px 8px rgba(0 ,0, 0, .25)",
-        insetShadowPrimary: "inset -4px -4px 16px",
-        insetShadowSecondary: "inset 4px 4px 8px",
-        insetShadowModifier: "inset -1px -1px 2px #fafafa",
+      {
+        name: "small",
+        acronym: "sm",
+        outset: "8px 8px 16px rgba(0, 0, 0, .25)",
+        insetPrimary: "inset -8px -8px 32px",
+        insetSecondary: "inset 8px 8px 16px",
+        insetModifier: "inset -2px -2px 4px #fafafa",
       },
-    },
+    ],
   },
 }
 
@@ -39,24 +43,10 @@ export default plugin(
 
 export const generateClayCss = (
   color: Color,
-  shadowName: string,
-  shadowInfo: Shadow
-) => {
-  const acronyms = new Map([
-    ["small", "sm"],
-    ["medium", "md"],
-    ["large", "lg"],
-  ])
-
-  const shadowAcronym = acronyms.get(shadowName)
-  if (!shadowAcronym) {
-    throw new Error("Unknown shadow name")
-  } else {
-    return {
-      [`.clay-${shadowAcronym}-${color.name}`]: {
-        backgroundColor: color.backgroundColor,
-        boxShadow: `${shadowInfo.outsetShadow},${shadowInfo.insetShadowPrimary} ${color.insetShadowColorPrimary},${shadowInfo.insetShadowSecondary} ${color.insetShadowColorSecondary},${shadowInfo.insetShadowModifier}`,
-      },
-    }
-  }
-}
+  shadow: Shadow
+): Record<string, ClayCss> => ({
+  [`.clay-${shadow.acronym ?? shadow.name}-${color.name}`]: {
+    backgroundColor: color.backgroundColor,
+    boxShadow: `${shadow.outset},${shadow.insetPrimary} ${color.insetShadowColorPrimary},${shadow.insetSecondary} ${color.insetShadowColorSecondary},${shadow.insetModifier}`,
+  },
+})
