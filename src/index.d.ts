@@ -1,8 +1,8 @@
 interface Color {
   name: string
-  backgroundColor: string
-  insetShadowColorPrimary: string
-  insetShadowColorSecondary: string
+  background: string
+  insetShadowPrimary: string
+  insetShadowSecondary: string
 }
 
 interface Shadow {

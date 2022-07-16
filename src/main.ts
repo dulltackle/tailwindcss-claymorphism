@@ -5,9 +5,9 @@ export const themeWithClay: { clay: Clay } = {
     colors: [
       {
         name: "red",
-        backgroundColor: "#f87171",
-        insetShadowColorPrimary: "#ef4444",
-        insetShadowColorSecondary: "#fca5a5",
+        background: "#f87171",
+        insetShadowPrimary: "#ef4444",
+        insetShadowSecondary: "#fca5a5",
       },
     ],
     shadows: [
@@ -46,7 +46,7 @@ export const generateClayCss = (
   shadow: Shadow
 ): Record<string, ClayCss> => ({
   [`.clay-${shadow.acronym ?? shadow.name}-${color.name}`]: {
-    backgroundColor: color.backgroundColor,
-    boxShadow: `${shadow.outset},${shadow.insetPrimary} ${color.insetShadowColorPrimary},${shadow.insetSecondary} ${color.insetShadowColorSecondary},${shadow.insetModifier}`,
+    backgroundColor: color.background,
+    boxShadow: `${shadow.outset},${shadow.insetPrimary} ${color.insetShadowPrimary},${shadow.insetSecondary} ${color.insetShadowSecondary},${shadow.insetModifier}`,
   },
 })

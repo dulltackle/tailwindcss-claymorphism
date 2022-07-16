@@ -9,9 +9,9 @@ import { generateAllClayCss, generateClayCss } from "./main"
 test("generate a clay css with a color and a shadow", () => {
   const red = {
     name: "red",
-    backgroundColor: "#f87171",
-    insetShadowColorPrimary: "#ef4444",
-    insetShadowColorSecondary: "#fca5a5",
+    background: "#f87171",
+    insetShadowPrimary: "#ef4444",
+    insetShadowSecondary: "#fca5a5",
   }
   const medium = {
     name: "medium",
