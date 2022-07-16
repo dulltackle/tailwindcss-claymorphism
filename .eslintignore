@@ -1,0 +1,10 @@
+/build
+/public/build
+.env
+
+/app/styles/tailwind.css
+
+# Ignore all HTML files:
+*.html
+*.svg
+*.css
