@@ -14,13 +14,15 @@ interface Shadow {
   insetShadowModifier: string
 }
 
+interface Shadows {
+  large?: Shadow
+  medium?: Shadow
+  small?: Shadow
+}
+
 interface Clay {
   colors: Color[]
-  shadows: {
-    large?: Shadow
-    medium?: Shadow
-    small?: Shadow
-  }
+  shadows: Shadows
 }
 
 export const themeWithClay: { clay: Clay } = {
