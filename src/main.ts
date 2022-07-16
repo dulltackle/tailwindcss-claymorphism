@@ -25,6 +25,11 @@ interface Clay {
   shadows: Shadows
 }
 
+interface ClayCss {
+  backgroundColor: string
+  boxShadow: string
+}
+
 export const themeWithClay: { clay: Clay } = {
   clay: {
     colors: [
