@@ -41,6 +41,20 @@ export default plugin(
   }
 )
 
+export const generateAllClayCss = (clay: Clay): Record<string, ClayCss> => {
+  const { colors, shadows } = clay
+  let allClayCss: Record<string, ClayCss> = {}
+  colors.forEach((color) => {
+    shadows.forEach((shadow) => {
+      allClayCss = {
+        ...generateClayCss(color, shadow),
+        ...allClayCss,
+      }
+    })
+  })
+  return allClayCss
+}
+
 export const generateClayCss = (
   color: Color,
   shadow: Shadow
