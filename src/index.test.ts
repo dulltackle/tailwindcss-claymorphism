@@ -3,85 +3,89 @@
 // import tailwindcss, { Config } from "tailwindcss"
 // import plugin from "./main"
 
-import { expect, test } from "vitest"
+import { describe, test } from "vitest"
 import { generateAllClayCss, generateClayCss } from "./main"
 
-test("generate a clay css with a color and a shadow", () => {
-  const red = {
-    name: "red",
-    background: "#f87171",
-    insetShadowPrimary: "#ef4444",
-    insetShadowSecondary: "#fca5a5",
-  }
-  const medium = {
-    name: "medium",
-    acronym: "md",
-    outset: "8px 8px 16px rgba(0, 0, 0, .25)",
-    insetPrimary: "inset -8px -8px 32px",
-    insetSecondary: "inset 8px 8px 16px",
-    insetModifier: "inset -2px -2px 4px #fafafa",
-  }
-  const aimedClayCss = {
-    [".clay-md-red"]: {
-      backgroundColor: "#f87171",
-      boxShadow: `8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #ef4444,inset 8px 8px 16px #fca5a5,inset -2px -2px 4px #fafafa`,
-    },
-  }
-  expect(generateClayCss(red, medium)).toEqual(aimedClayCss)
-})
-
-test("generate clay css with colors and shadows", ({ expect }) => {
-  const colors = [
-    {
-      name: "red",
-      backgroundColor: "#f87171",
-      insetShadowColorPrimary: "#ef4444",
-      insetShadowColorSecondary: "#fca5a5",
-    },
-    {
-      name: "orange",
-      backgroundColor: "#fb923c",
-      insetShadowColorPrimary: "#f97316",
-      insetShadowColorSecondary: "#fdba74",
-    },
-  ]
-  const shadows = {
-    medium: {
-      outsetShadow: "8px 8px 16px rgba(0, 0, 0, .25)",
-      insetShadowPrimary: "inset -8px -8px 32px",
-      insetShadowSecondary: "inset 8px 8px 16px",
-      insetShadowModifier: "inset -2px -2px 4px #fafafa",
-    },
-    small: {
-      outsetShadow: "4px 4px 8px rgba(0, 0, 0, .25)",
-      insetShadowPrimary: "inset -4px -4px 16px",
-      insetShadowSecondary: "inset 4px 4px 8px",
-      insetShadowModifier: "inset -1px -1px 2px #fafafa",
-    },
-  }
-  const aimedClayCss = {
-    [".clay-md-red"]: {
-      backgroundColor: "#f87171",
-      boxShadow:
-        "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #ef4444,inset 8px 8px 16px #fca5a5,inset -2px -2px 4px #fafafa",
-    },
-    [".clay-sm-red"]: {
-      backgroundColor: "#f87171",
-      boxShadow:
-        "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #ef4444,inset 4px 4px 8px #fca5a5,inset -1px -1px 2px #fafafa",
-    },
-    [".clay-md-orange"]: {
-      backgroundColor: "#fb923c",
-      boxShadow:
-        "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #f97316,inset 8px 8px 16px #fdba74,inset -2px -2px 4px #fafafa",
-    },
-    [".clay-sm-orange"]: {
-      backgroundColor: "#fb923c",
-      boxShadow:
-        "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #f97316,inset 4px 4px 8px #fdba74,inset -1px -1px 2px #fafafa",
-    },
-  }
-  expect(generateAllClayCss(colors, shadows)).toEqual(aimedClayCss)
+describe.each([
+  {
+    colors: [
+      {
+        name: "red",
+        background: "#f87171",
+        insetShadowPrimary: "#ef4444",
+        insetShadowSecondary: "#fca5a5",
+      },
+      {
+        name: "orange",
+        background: "#fb923c",
+        insetShadowPrimary: "#f97316",
+        insetShadowSecondary: "#fdba74",
+      },
+    ],
+    shadows: [
+      {
+        name: "medium",
+        acronym: "md",
+        outset: "8px 8px 16px rgba(0, 0, 0, .25)",
+        insetPrimary: "inset -8px -8px 32px",
+        insetSecondary: "inset 8px 8px 16px",
+        insetModifier: "inset -2px -2px 4px #fafafa",
+      },
+      {
+        name: "small",
+        acronym: "sm",
+        outset: "4px 4px 8px rgba(0, 0, 0, .25)",
+        insetPrimary: "inset -4px -4px 16px",
+        insetSecondary: "inset 4px 4px 8px",
+        insetModifier: "inset -1px -1px 2px #fafafa",
+      },
+    ],
+  },
+])("generate clay css", ({ colors, shadows }) => {
+  test("generate a clay css with a color and a shadow", ({ expect }) => {
+    const red = colors[0]
+    const mediumRed = {
+      [".clay-md-red"]: {
+        backgroundColor: "#f87171",
+        boxShadow:
+          "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #ef4444,inset 8px 8px 16px #fca5a5,inset -2px -2px 4px #fafafa",
+      },
+    }
+    const smallRed = {
+      [".clay-sm-red"]: {
+        backgroundColor: "#f87171",
+        boxShadow:
+          "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #ef4444,inset 4px 4px 8px #fca5a5,inset -1px -1px 2px #fafafa",
+      },
+    }
+    expect(generateClayCss(red, shadows[0])).toEqual(mediumRed)
+    expect(generateClayCss(red, shadows[1])).toEqual(smallRed)
+  })
+  test("generate clay css with colors and shadows", ({ expect }) => {
+    const aimedClayCss = {
+      [".clay-md-red"]: {
+        backgroundColor: "#f87171",
+        boxShadow:
+          "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #ef4444,inset 8px 8px 16px #fca5a5,inset -2px -2px 4px #fafafa",
+      },
+      [".clay-sm-red"]: {
+        backgroundColor: "#f87171",
+        boxShadow:
+          "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #ef4444,inset 4px 4px 8px #fca5a5,inset -1px -1px 2px #fafafa",
+      },
+      [".clay-md-orange"]: {
+        backgroundColor: "#fb923c",
+        boxShadow:
+          "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #f97316,inset 8px 8px 16px #fdba74,inset -2px -2px 4px #fafafa",
+      },
+      [".clay-sm-orange"]: {
+        backgroundColor: "#fb923c",
+        boxShadow:
+          "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #f97316,inset 4px 4px 8px #fdba74,inset -1px -1px 2px #fafafa",
+      },
+    }
+    expect(generateAllClayCss({ colors, shadows })).toEqual(aimedClayCss)
+  })
 })
 
 // const generatePluginCss = (testConfig = {}, pluginOptions = {}) => {
