@@ -31,7 +31,7 @@ export const themeWithClay: { clay: Clay } = {
   },
 }
 
-export default plugin(
+export const tailwindcssClay = plugin(
   ({ addUtilities, theme }) => {
     const clay: Clay = theme("clay")
   },
