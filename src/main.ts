@@ -43,15 +43,12 @@ export const tailwindcssClay = plugin(
   }
 )
 
-export const generateAllClayCss = (clay: Clay): CSSRuleObject => {
+export const generateAllClayCss = (clay: Clay): CSSRuleObject[] => {
   const { colors, shadows } = clay
-  let allClayCss: CSSRuleObject = {}
+  const allClayCss: CSSRuleObject[] = []
   colors.forEach((color) => {
     shadows.forEach((shadow) => {
-      allClayCss = {
-        ...generateClayCss(color, shadow),
-        ...allClayCss,
-      }
+      allClayCss.push(generateClayCss(color, shadow))
     })
   })
   return allClayCss
