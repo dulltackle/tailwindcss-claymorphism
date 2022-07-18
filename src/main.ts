@@ -1,4 +1,5 @@
 import plugin from "tailwindcss/plugin"
+import { CSSRuleObject } from "tailwindcss/types/config"
 
 export const themeWithClay: { clay: Clay } = {
   clay: {
@@ -34,6 +35,7 @@ export const themeWithClay: { clay: Clay } = {
 export const tailwindcssClay = plugin(
   ({ addUtilities, theme }) => {
     const clay: Clay = theme("clay")
+    addUtilities(generateAllClayCss(clay))
   },
   {
     content: ["./src/**/*.{js,ts,jsx,tsx}"],
@@ -41,9 +43,9 @@ export const tailwindcssClay = plugin(
   }
 )
 
-export const generateAllClayCss = (clay: Clay): Record<string, ClayCss> => {
+export const generateAllClayCss = (clay: Clay): CSSRuleObject => {
   const { colors, shadows } = clay
-  let allClayCss: Record<string, ClayCss> = {}
+  let allClayCss: CSSRuleObject = {}
   colors.forEach((color) => {
     shadows.forEach((shadow) => {
       allClayCss = {
@@ -58,7 +60,7 @@ export const generateAllClayCss = (clay: Clay): Record<string, ClayCss> => {
 export const generateClayCss = (
   color: Color,
   shadow: Shadow
-): Record<string, ClayCss> => ({
+): CSSRuleObject => ({
   [`.clay-${shadow.acronym ?? shadow.name}-${color.name}`]: {
     backgroundColor: color.background,
     boxShadow: `${shadow.outset},${shadow.insetPrimary} ${color.insetShadowPrimary},${shadow.insetSecondary} ${color.insetShadowSecondary},${shadow.insetModifier}`,
