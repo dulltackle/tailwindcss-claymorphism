@@ -1,4 +1,5 @@
 import { describe, test } from "vitest"
+import { cssMatcher } from "./util"
 
 describe("`cssMatcher()`", () => {
   test("two css classes with same content should be equal(return `equalObj`)", ({
