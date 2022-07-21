@@ -1,8 +1,13 @@
 import merge from "lodash.merge"
 import postcss from "postcss"
 import tailwindcss, { Config } from "tailwindcss"
-import { describe, test } from "vitest"
+import { beforeAll, describe, expect, test } from "vitest"
 import { generateAllClayCss, generateClayCss, tailwindcssClay } from "./main"
+import { cssMatcher } from "./util"
+
+beforeAll(() => {
+  expect.extend({ toMatchCss: cssMatcher })
+})
 
 describe.each([
   {
@@ -97,7 +102,7 @@ describe.each([
 const generatePluginCss = (config: Config) => {
   const sandboxConfig: Config = {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-    theme: {},
+    corePlugins: [],
     plugins: [tailwindcssClay],
   }
   const postcssPlugins = [tailwindcss(merge(sandboxConfig, config))]
@@ -108,23 +113,23 @@ const generatePluginCss = (config: Config) => {
 }
 
 describe("plugin", () => {
-  test("generate default clay css with no config", async ({ expect }) => {
-    const aimedClayCss = {
-      [".clay-md-red"]: {
+  test("generate default clay css with no config", async () => {
+    const aimedClayCss = `
+      .clay-md-red: {
         backgroundColor: "#f87171",
         boxShadow:
           "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #ef4444,inset 8px 8px 16px #fca5a5,inset -2px -2px 4px #fafafa",
       },
-      [".clay-sm-red"]: {
+      .clay-sm-red: {
         backgroundColor: "#f87171",
         boxShadow:
           "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #ef4444,inset 4px 4px 8px #fca5a5,inset -1px -1px 2px #fafafa",
       },
-    }
+    `
     await expect(
       generatePluginCss({
         content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
       })
-    ).resolves.toEqual(aimedClayCss)
+    ).resolves.toMatchCss(aimedClayCss)
   })
 })
