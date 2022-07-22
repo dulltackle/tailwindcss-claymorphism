@@ -21,17 +21,11 @@ export const cssMatcher = (received: string, expected: string) => {
     }
   }
 
-  const whitespaceRemoved = (str: string) => str.replace(/[;\s]/g, "")
+  const pass = whitespaceRemoved(received) === whitespaceRemoved(expected)
+  const message = () =>
+    `expected ${received}${pass ? " not" : ""} to match CSS ${expected}`
 
-  if (whitespaceRemoved(received) === whitespaceRemoved(expected)) {
-    return {
-      message: () => `expected ${received} not to match CSS ${expected}`,
-      pass: true,
-    }
-  } else {
-    return {
-      message: () => `expected ${received} to match CSS ${expected}`,
-      pass: false,
-    }
-  }
+  return { pass, message }
 }
+
+const whitespaceRemoved = (str: string) => str.replace(/[;\s]/g, "")
