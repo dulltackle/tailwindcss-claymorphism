@@ -39,4 +39,22 @@ describe("`cssMatcher()`", () => {
     expect(matcher.pass).toBe(notEqualObj.pass)
     expect(matcher.message()).toBe(notEqualObj.message())
   })
+
+  test("should throw a error when `received` is not string", ({ expect }) => {
+    // use `never` to placate TS only
+    const received = Math.floor(Math.random() * 1000) as never
+    const expected = `
+      .clay-md-red: {
+        backgroundColor: #f87171;
+      }
+    `
+    expect(cssMatcher(received, expected)).toThrowError()
+  })
+
+  test("should throw a error when `expected` is not string", ({ expect }) => {
+    const received = ".text-color: { color: #fff; }"
+    // use `never` to placate TS only
+    const expected = Math.floor(Math.random() * 1000) as never
+    expect(cssMatcher(received, expected)).toThrowError()
+  })
 })
