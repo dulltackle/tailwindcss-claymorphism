@@ -48,13 +48,13 @@ describe("`cssMatcher()`", () => {
         backgroundColor: #f87171;
       }
     `
-    expect(cssMatcher(received, expected)).toThrowError()
+    expect(() => cssMatcher(received, expected)).toThrowError()
   })
 
   test("should throw a error when `expected` is not string", ({ expect }) => {
     const received = ".text-color: { color: #fff; }"
     // use `never` to placate TS only
     const expected = Math.floor(Math.random() * 1000) as never
-    expect(cssMatcher(received, expected)).toThrowError()
+    expect(() => cssMatcher(received, expected)).toThrowError()
   })
 })
