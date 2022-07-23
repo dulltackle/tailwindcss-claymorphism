@@ -50,15 +50,13 @@ describe.each([
     const mediumRed = {
       [".clay-md-red"]: {
         backgroundColor: "#f87171",
-        boxShadow:
-          "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #ef4444,inset 8px 8px 16px #fca5a5,inset -2px -2px 4px #fafafa",
+        boxShadow: "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #ef4444,inset 8px 8px 16px #fca5a5,inset -2px -2px 4px #fafafa",
       },
     }
     const smallRed = {
       [".clay-sm-red"]: {
         backgroundColor: "#f87171",
-        boxShadow:
-          "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #ef4444,inset 4px 4px 8px #fca5a5,inset -1px -1px 2px #fafafa",
+        boxShadow: "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #ef4444,inset 4px 4px 8px #fca5a5,inset -1px -1px 2px #fafafa",
       },
     }
     expect(generateClayCss(red, shadows[0])).toEqual(mediumRed)
@@ -69,29 +67,25 @@ describe.each([
       {
         [".clay-md-red"]: {
           backgroundColor: "#f87171",
-          boxShadow:
-            "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #ef4444,inset 8px 8px 16px #fca5a5,inset -2px -2px 4px #fafafa",
+          boxShadow: "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #ef4444,inset 8px 8px 16px #fca5a5,inset -2px -2px 4px #fafafa",
         },
       },
       {
         [".clay-sm-red"]: {
           backgroundColor: "#f87171",
-          boxShadow:
-            "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #ef4444,inset 4px 4px 8px #fca5a5,inset -1px -1px 2px #fafafa",
+          boxShadow: "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #ef4444,inset 4px 4px 8px #fca5a5,inset -1px -1px 2px #fafafa",
         },
       },
       {
         [".clay-md-orange"]: {
           backgroundColor: "#fb923c",
-          boxShadow:
-            "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #f97316,inset 8px 8px 16px #fdba74,inset -2px -2px 4px #fafafa",
+          boxShadow: "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #f97316,inset 8px 8px 16px #fdba74,inset -2px -2px 4px #fafafa",
         },
       },
       {
         [".clay-sm-orange"]: {
           backgroundColor: "#fb923c",
-          boxShadow:
-            "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #f97316,inset 4px 4px 8px #fdba74,inset -1px -1px 2px #fafafa",
+          boxShadow: "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #f97316,inset 4px 4px 8px #fdba74,inset -1px -1px 2px #fafafa",
         },
       },
     ]
@@ -99,7 +93,7 @@ describe.each([
   })
 })
 
-const generatePluginCss = (config: Config) => {
+const generatePluginCss = async (config: Config) => {
   const sandboxConfig: Config = {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     corePlugins: [],
@@ -107,9 +101,8 @@ const generatePluginCss = (config: Config) => {
   }
   const postcssPlugins = [tailwindcss(merge(sandboxConfig, config))]
 
-  return postcss(postcssPlugins)
-    .process("@tailwind utilities", { from: undefined })
-    .then((result) => result.css)
+  const result = await postcss(postcssPlugins).process("@tailwind utilities", { from: undefined })
+  return result.css
 }
 
 describe("plugin", () => {
@@ -124,10 +117,6 @@ describe("plugin", () => {
         box-shadow: 4px 4px 8px rgba(0, 0, 0, .25), inset -4px -4px 16px #ef4444, inset 4px 4px 8px #fca5a5, inset -1px -1px 2px #fafafa;
       }
     `
-    await expect(
-      generatePluginCss({
-        content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-      })
-    ).resolves.toMatchCss(aimedClayCss)
+    await expect(generatePluginCss({ content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"] })).resolves.toMatchCss(aimedClayCss)
   })
 })
