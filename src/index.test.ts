@@ -115,16 +115,14 @@ const generatePluginCss = (config: Config) => {
 describe("plugin", () => {
   test("generate default clay css with no config", async () => {
     const aimedClayCss = `
-      .clay-md-red: {
-        backgroundColor: "#f87171",
-        boxShadow:
-          "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #ef4444,inset 8px 8px 16px #fca5a5,inset -2px -2px 4px #fafafa",
-      },
-      .clay-sm-red: {
-        backgroundColor: "#f87171",
-        boxShadow:
-          "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #ef4444,inset 4px 4px 8px #fca5a5,inset -1px -1px 2px #fafafa",
-      },
+      .clay-md-red {
+        background-color: #f87171;
+        box-shadow: 8px 8px 16px rgba(0, 0, 0, .25), inset -8px -8px 32px #ef4444, inset 8px 8px 16px #fca5a5, inset -2px -2px 4px #fafafa;
+      }
+      .clay-sm-red {
+        background-color: #f87171;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, .25), inset -4px -4px 16px #ef4444, inset 4px 4px 8px #fca5a5, inset -1px -1px 2px #fafafa;
+      }
     `
     await expect(
       generatePluginCss({
