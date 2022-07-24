@@ -1,12 +1,4 @@
-import {
-  matcherErrorMessage,
-  matcherHint,
-  printDiffOrStringify,
-  printExpected,
-  printReceived,
-  printWithType,
-  stringify,
-} from "jest-matcher-utils"
+import { matcherErrorMessage, matcherHint, printDiffOrStringify, printExpected, printReceived, printWithType, stringify } from "jest-matcher-utils"
 
 export const cssMatcher = (received: string, expected: string) => {
   for (const element of [received, expected]) {
@@ -15,9 +7,7 @@ export const cssMatcher = (received: string, expected: string) => {
         matcherErrorMessage(
           matcherHint("toMatchCss"),
           `both received and expected must be string`,
-          printWithType("Expected", stringify(expected), printExpected) +
-            "\n" +
-            printWithType("Received", stringify(received), printReceived)
+          printWithType("Expected", stringify(expected), printExpected) + "\n" + printWithType("Received", stringify(received), printReceived)
         )
       )
     }
