@@ -17,7 +17,7 @@ export const cssMatcher = (received: string, expected: string) => {
   const expectedWithoutFormat = removeFormat(expected)
   const pass = receivedWithoutFormat === expectedWithoutFormat
 
-  const diffMessage = printDiffOrStringify(receivedWithoutFormat, expectedWithoutFormat, "Expected CSS", "Received CSS", true)
+  const diffMessage = printDiffOrStringify(expectedWithoutFormat, receivedWithoutFormat, "Expected CSS", "Received CSS", true)
   const passMessage =
     matcherHint(".not.toMatchCss") +
     "\n\n" +
