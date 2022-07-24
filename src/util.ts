@@ -13,13 +13,20 @@ export const cssMatcher = (received: string, expected: string) => {
     }
   }
 
-  const receivedWithoutWhitespace = whitespaceRemoved(received)
-  const expectedWithoutWhitespace = whitespaceRemoved(expected)
+  const receivedWithoutFormat = removeFormat(received)
+  const expectedWithoutFormat = removeFormat(expected)
+  const pass = receivedWithoutFormat === expectedWithoutFormat
 
-  const pass = receivedWithoutWhitespace === expectedWithoutWhitespace
-  const message = () => printDiffOrStringify(receivedWithoutWhitespace, expectedWithoutWhitespace, "Expected CSS", "Received CSS", true)
+  const diffMessage = printDiffOrStringify(receivedWithoutFormat, expectedWithoutFormat, "Expected CSS", "Received CSS", true)
+  const passMessage =
+    matcherHint(".not.toMatchCss") +
+    "\n\n" +
+    "Two CSS classes should not be equal while ignoring white-space and semicolon (using ===):\n" +
+    diffMessage
+  const failMessage =
+    matcherHint(".toMatchCss") + "\n\n" + "Two CSS classes should be equal while ignoring white-space and semicolon (using ===):\n" + diffMessage
 
-  return { pass, message }
+  return { pass, message: () => (pass ? passMessage : failMessage) }
 }
 
-const whitespaceRemoved = (str: string) => str.replace(/[;\s]/g, "")
+const removeFormat = (str: string) => str.trim().replace(/[;\s]+/g, "")
