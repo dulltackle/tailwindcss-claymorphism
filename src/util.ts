@@ -5,7 +5,7 @@ export const cssMatcher = (received: string, expected: string) => {
     if (typeof element !== "string") {
       throw new Error(
         matcherErrorMessage(
-          matcherHint("toMatchCss"),
+          matcherHint(".toMatchCss"),
           `both received and expected must be string`,
           printWithType("Expected", expected, printExpected) + "\n" + printWithType("Received", received, printReceived)
         )
