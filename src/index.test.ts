@@ -119,4 +119,78 @@ describe("plugin", () => {
     `
     await expect(generatePluginCss({ content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"] })).resolves.toMatchCss(aimedClayCss)
   })
+  test("generate clay css with new color", async () => {
+    const config: Config = {
+      content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+      theme: {
+        extend: {
+          clay: {
+            colors: [
+              {
+                name: "orange",
+                background: "#fb923c",
+                insetShadowPrimary: "#f97316",
+                insetShadowSecondary: "#fdba74",
+              },
+            ],
+          },
+        },
+      },
+    }
+    const aimedClayCss = `
+      .clay-md-red {
+        background-color: #f87171;
+        box-shadow: 8px 8px 16px rgba(0, 0, 0, .25), inset -8px -8px 32px #ef4444, inset 8px 8px 16px #fca5a5, inset -2px -2px 4px #fafafa;
+      }
+      .clay-sm-red {
+        background-color: #f87171;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, .25), inset -4px -4px 16px #ef4444, inset 4px 4px 8px #fca5a5, inset -1px -1px 2px #fafafa;
+      }
+      .clay-md-orange {
+        background-color: #fb923c;
+        box-shadow: 8px 8px 16px rgba(0, 0, 0, .25), inset -8px -8px 32px #f97316, inset 8px 8px 16px #fdba74, inset -2px -2px 4px #fafafa;
+      }
+      .clay-sm-orange {
+        background-color: #fb923c;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, .25), inset -4px -4px 16px #f97316, inset 4px 4px 8px #fdba74, inset -1px -1px 2px #fafafa;
+      }
+    `
+    await expect(generatePluginCss(config)).resolves.toMatchCss(aimedClayCss)
+  })
+  test("generate clay css with new shadow", async () => {
+    const config: Config = {
+      content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+      theme: {
+        extend: {
+          clay: {
+            shadows: [
+              {
+                name: "large",
+                acronym: "lg",
+                outset: "8px 8px 16px rgba(0, 0, 0, .25)",
+                insetPrimary: "inset -8px -8px 32px",
+                insetSecondary: "inset 8px 8px 16px",
+                insetModifier: "inset -2px -2px 4px #fafafa",
+              },
+            ],
+          },
+        },
+      },
+    }
+    const aimedClayCss = `
+      .clay-md-red {
+        background-color: #f87171;
+        box-shadow: 8px 8px 16px rgba(0, 0, 0, .25), inset -8px -8px 32px #ef4444, inset 8px 8px 16px #fca5a5, inset -2px -2px 4px #fafafa;
+      }
+      .clay-sm-red {
+        background-color: #f87171;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, .25), inset -4px -4px 16px #ef4444, inset 4px 4px 8px #fca5a5, inset -1px -1px 2px #fafafa;
+      }
+      .clay-lg-red {
+        background-color: #f87171;
+        box-shadow: 8px 8px 16px rgba(0, 0, 0, .25), inset -8px -8px 32px #ef4444, inset 8px 8px 16px #fca5a5, inset -2px -2px 4px #fafafa;
+      }
+    `
+    await expect(generatePluginCss(config)).resolves.toMatchCss(aimedClayCss)
+  })
 })
