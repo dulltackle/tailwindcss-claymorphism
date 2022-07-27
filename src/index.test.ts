@@ -105,9 +105,13 @@ const generatePluginCss = async (config: Config) => {
   return result.css
 }
 
-describe("plugin", () => {
-  test("generate default clay css with no config", async () => {
-    const aimedClayCss = `
+describe.each([
+  {
+    // with no config
+    config: {
+      content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    },
+    aimedClayCss: `
       .clay-md-red {
         background-color: #f87171;
         box-shadow: 8px 8px 16px rgba(0, 0, 0, .25), inset -8px -8px 32px #ef4444, inset 8px 8px 16px #fca5a5, inset -2px -2px 4px #fafafa;
@@ -116,11 +120,11 @@ describe("plugin", () => {
         background-color: #f87171;
         box-shadow: 4px 4px 8px rgba(0, 0, 0, .25), inset -4px -4px 16px #ef4444, inset 4px 4px 8px #fca5a5, inset -1px -1px 2px #fafafa;
       }
-    `
-    await expect(generatePluginCss({ content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"] })).resolves.toMatchCss(aimedClayCss)
-  })
-  test("generate clay css with new color", async () => {
-    const config: Config = {
+    `,
+  },
+  // with custom color
+  {
+    config: {
       content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
       theme: {
         extend: {
@@ -136,8 +140,8 @@ describe("plugin", () => {
           },
         },
       },
-    }
-    const aimedClayCss = `
+    },
+    aimedClayCss: `
       .clay-md-red {
         background-color: #f87171;
         box-shadow: 8px 8px 16px rgba(0, 0, 0, .25), inset -8px -8px 32px #ef4444, inset 8px 8px 16px #fca5a5, inset -2px -2px 4px #fafafa;
@@ -154,11 +158,11 @@ describe("plugin", () => {
         background-color: #fb923c;
         box-shadow: 4px 4px 8px rgba(0, 0, 0, .25), inset -4px -4px 16px #f97316, inset 4px 4px 8px #fdba74, inset -1px -1px 2px #fafafa;
       }
-    `
-    await expect(generatePluginCss(config)).resolves.toMatchCss(aimedClayCss)
-  })
-  test("generate clay css with new shadow", async () => {
-    const config: Config = {
+    `,
+  },
+  // with custom shadow
+  {
+    config: {
       content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
       theme: {
         extend: {
@@ -176,8 +180,8 @@ describe("plugin", () => {
           },
         },
       },
-    }
-    const aimedClayCss = `
+    },
+    aimedClayCss: `
       .clay-md-red {
         background-color: #f87171;
         box-shadow: 8px 8px 16px rgba(0, 0, 0, .25), inset -8px -8px 32px #ef4444, inset 8px 8px 16px #fca5a5, inset -2px -2px 4px #fafafa;
@@ -190,7 +194,10 @@ describe("plugin", () => {
         background-color: #f87171;
         box-shadow: 8px 8px 16px rgba(0, 0, 0, .25), inset -8px -8px 32px #ef4444, inset 8px 8px 16px #fca5a5, inset -2px -2px 4px #fafafa;
       }
-    `
+    `,
+  },
+])("plugin with various configs", ({ config, aimedClayCss }) => {
+  test("generated clay css should align with its config", async () => {
     await expect(generatePluginCss(config)).resolves.toMatchCss(aimedClayCss)
   })
 })
