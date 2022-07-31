@@ -38,7 +38,7 @@ export const tailwindcssClay = plugin(
     addUtilities(generateAllClayCss(clay))
   },
   {
-    content: ["./src/**/*.{js,ts,jsx,tsx}"],
+    content: [],
     theme: themeWithClay,
   }
 )
