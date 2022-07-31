@@ -2,8 +2,8 @@ import merge from "lodash.merge"
 import postcss from "postcss"
 import tailwindcss, { Config } from "tailwindcss"
 import { beforeAll, describe, expect, test } from "vitest"
-import { generateAllClayCss, generateClayCss, tailwindcssClay } from "./main"
-import { cssMatcher } from "./util"
+import { generateAllClayCss, generateClayCss, tailwindcssClay } from "~/main"
+import { cssMatcher } from "~/util"
 
 beforeAll(() => {
   expect.extend({ toMatchCss: cssMatcher })
@@ -105,9 +105,9 @@ describe("generate clay css", () => {
   })
 })
 
-const generatePluginCss = async (config: Config) => {
+const generatePluginCss = async (config: Partial<Config>) => {
   const sandboxConfig: Config = {
-    content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    content: ["./test/**/*.{js,ts,jsx,tsx}"],
     corePlugins: [],
     plugins: [tailwindcssClay],
   }
@@ -120,9 +120,7 @@ const generatePluginCss = async (config: Config) => {
 describe.each([
   {
     // with no config
-    config: {
-      content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-    },
+    config: {},
     aimedClayCss: `
       .clay-md-red {
         background-color: #f87171;
@@ -137,7 +135,6 @@ describe.each([
   // with custom color
   {
     config: {
-      content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
       theme: {
         extend: {
           clay: {
@@ -175,7 +172,6 @@ describe.each([
   // with custom shadow
   {
     config: {
-      content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
       theme: {
         extend: {
           clay: {
