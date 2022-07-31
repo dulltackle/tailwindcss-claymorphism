@@ -54,10 +54,7 @@ export const generateAllClayCss = (clay: Clay): CSSRuleObject[] => {
   return allClayCss
 }
 
-export const generateClayCss = (
-  color: Color,
-  shadow: Shadow
-): CSSRuleObject => ({
+export const generateClayCss = (color: Color, shadow: Shadow): CSSRuleObject => ({
   [`.clay-${shadow.acronym ?? shadow.name}-${color.name}`]: {
     backgroundColor: color.background,
     boxShadow: `${shadow.outset},${shadow.insetPrimary} ${color.insetShadowPrimary},${shadow.insetSecondary} ${color.insetShadowSecondary},${shadow.insetModifier}`,
