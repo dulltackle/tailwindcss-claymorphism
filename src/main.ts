@@ -1,5 +1,6 @@
 import plugin from "tailwindcss/plugin"
 import { CSSRuleObject } from "tailwindcss/types/config"
+import { isClay } from "./util"
 
 export const themeWithClay: { clay: Clay } = {
   clay: {
@@ -34,8 +35,12 @@ export const themeWithClay: { clay: Clay } = {
 
 export const tailwindcssClay = plugin(
   ({ addUtilities, theme }) => {
-    const clay: Clay = theme("clay")
-    addUtilities(generateAllClayCss(clay))
+    const clay: unknown = theme("clay")
+    if (!!clay && isClay(clay)) {
+      addUtilities(generateAllClayCss(clay))
+    } else {
+      throw new Error("tailwindcss-clay: can not get clay config info")
+    }
   },
   {
     content: [],
