@@ -25,7 +25,7 @@
     "email": "dulltackle@outlook.com"
   },
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "eslint --quiet src/* && vitest run && tsc && vite build",
     "test": "vitest"
   },
   "devDependencies": {
