@@ -1,7 +1,29 @@
 {
-  "name": "tailwindcss-clay",
-  "private": true,
-  "version": "0.0.0",
+  "name": "tailwindcss-claymorphism",
+  "version": "0.7.2",
+  "description": "Tailwind CSS plugin to generate claymorphism style utilities",
+  "license": "MIT",
+  "main": "dist/index.cjs",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "keywords": [
+    "tailwindcss",
+    "claymorphism",
+    "claymorphic",
+    "plugin",
+    "style",
+    "css"
+  ],
+  "repository": "https://github.com/dulltackle/tailwindcss-claymorphism.git",
+  "bugs": "https://github.com/dulltackle/tailwindcss-claymorphism/issues",
+  "homepage": "https://github.com/dulltackle/tailwindcss-claymorphism#readme",
+  "author": {
+    "name": "dulltackle",
+    "email": "dulltackle@outlook.com"
+  },
   "scripts": {
     "build": "tsc && vite build",
     "test": "vitest"

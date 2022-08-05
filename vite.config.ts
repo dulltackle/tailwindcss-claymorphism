@@ -6,12 +6,11 @@ import { defineConfig } from "vitest/config"
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "src/main.ts"),
+      entry: resolve(__dirname, "src/export.ts"),
       formats: ["cjs"],
-      name: "TailwindcssClay",
-      fileName: "index",
+      fileName: (format) => (format === "cjs" ? "index.cjs" : "index.js"),
     },
-    outDir: "lib",
+    outDir: "dist",
   },
   resolve: {
     alias: { "~": resolve(__dirname, "src") },

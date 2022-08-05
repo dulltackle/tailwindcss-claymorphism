@@ -1,5 +1,5 @@
 import plugin from "tailwindcss/plugin"
-import { CSSRuleObject } from "tailwindcss/types/config"
+import type { CSSRuleObject } from "tailwindcss/types/config"
 import { isClay } from "./util"
 
 export const themeWithClay: { clay: Clay } = {

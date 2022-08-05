@@ -3,7 +3,7 @@ import postcss from "postcss"
 import tailwindcss, { Config } from "tailwindcss"
 import { beforeAll, describe, expect, test } from "vitest"
 import { generateAllClayCss, generateClayCss, tailwindcssClay } from "~/main"
-import { cssMatcher } from "~/util"
+import { cssMatcher } from "./matcher"
 
 beforeAll(() => {
   expect.extend({ toMatchCss: cssMatcher })
@@ -107,7 +107,7 @@ describe("generate clay css", () => {
 
 const generatePluginCss = async (config: Partial<Config>) => {
   const sandboxConfig: Config = {
-    content: ["./test/**/*.{js,ts,jsx,tsx}"],
+    content: ["./test/main.test.ts"],
     corePlugins: [],
     plugins: [tailwindcssClay],
   }
