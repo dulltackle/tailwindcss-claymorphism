@@ -25,9 +25,12 @@
     "email": "dulltackle@outlook.com"
   },
   "scripts": {
-    "build": "eslint --quiet src/* && tsc && vite build",
+    "build": "vite build",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "lint": "eslint --quiet src/*",
+    "typecheck": "tsc",
+    "format": "prettier --write --ignore-unknown src/*",
+    "dev:test": "vitest"
   },
   "devDependencies": {
     "@types/lodash.merge": "^4.6.7",
