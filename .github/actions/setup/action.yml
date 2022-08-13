@@ -1,0 +1,28 @@
+name: "Setup Environment"
+
+description: "Setup Node with pnpm(the versions of both need to be set manually)"
+
+inputs:
+  pnpm-version:
+    description: "The version of pnpm(default version is 7)"
+    required: true
+    default: "7.x.x"
+
+  node-version:
+    description: "The version of Node(default version is 16)"
+    required: true
+    default: "16.x"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: pnpm/action-setup@v2.2.2
+      with:
+        version: ${{ inputs.pnpm-version }}
+    - name: Use Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: "pnpm"
+    - run: pnpm install
+      shell: bash
