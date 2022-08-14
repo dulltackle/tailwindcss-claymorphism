@@ -1,11 +1,11 @@
 changelog:
   exclude:
     labels:
-      - ignore-for-release
+      - ignore for release
   categories:
     - title: 💥 Breaking Changes
       labels:
-        - breaking-change
+        - breaking change
     - title: ✨ New Features
       labels:
         - enhancement
