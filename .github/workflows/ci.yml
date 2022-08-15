@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ["main", "develop", "release/**"]
+
+env:
+  pnpm-version: 7.x.x
+  node-version: 16.x
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup
+        with:
+          pnpm-version: ${{ env.pnpm-version }}
+          node-version: ${{ env.node-version }}
+      - run: pnpm run lint
+
+  typecheck:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup
+        with:
+          pnpm-version: ${{ env.pnpm-version }}
+          node-version: ${{ env.node-version }}
+      - run: pnpm run typecheck
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup
+        with:
+          pnpm-version: ${{ env.pnpm-version }}
+          node-version: ${{ env.node-version }}
+      - run: pnpm run test

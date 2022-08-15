@@ -1,85 +1,67 @@
 import plugin from "tailwindcss/plugin"
-
-interface Color {
-  name: string
-  backgroundColor: string
-  insetShadowColorPrimary: string
-  insetShadowColorSecondary: string
-}
-
-interface Shadow {
-  outsetShadow: string
-  insetShadowPrimary: string
-  insetShadowSecondary: string
-  insetShadowModifier: string
-}
-
-interface Clay {
-  colors: Color[]
-  shadows: {
-    large?: Shadow
-    medium?: Shadow
-    small?: Shadow
-  }
-}
+import type { CSSRuleObject } from "tailwindcss/types/config"
+import { isClay } from "./util"
 
 export const themeWithClay: { clay: Clay } = {
   clay: {
     colors: [
       {
         name: "red",
-        backgroundColor: "#f87171",
-        insetShadowColorPrimary: "#ef4444",
-        insetShadowColorSecondary: "#fca5a5",
+        background: "#f87171",
+        insetShadowPrimary: "#ef4444",
+        insetShadowSecondary: "#fca5a5",
       },
     ],
-    shadows: {
-      medium: {
-        outsetShadow: "8px 8px 16px rgba(0 ,0, 0, .25)",
-        insetShadowPrimary: "inset -8px -8px 32px",
-        insetShadowSecondary: "inset 8px 8px 16px",
-        insetShadowModifier: "inset -2px -2px 4px #fafafa",
+    shadows: [
+      {
+        name: "medium",
+        acronym: "md",
+        outset: "8px 8px 16px rgba(0, 0, 0, .25)",
+        insetPrimary: "inset -8px -8px 32px",
+        insetSecondary: "inset 8px 8px 16px",
+        insetModifier: "inset -2px -2px 4px #fafafa",
       },
-      small: {
-        outsetShadow: "4px 4px 8px rgba(0 ,0, 0, .25)",
-        insetShadowPrimary: "inset -4px -4px 16px",
-        insetShadowSecondary: "inset 4px 4px 8px",
-        insetShadowModifier: "inset -1px -1px 2px #fafafa",
+      {
+        name: "small",
+        acronym: "sm",
+        outset: "4px 4px 8px rgba(0, 0, 0, .25)",
+        insetPrimary: "inset -4px -4px 16px",
+        insetSecondary: "inset 4px 4px 8px",
+        insetModifier: "inset -1px -1px 2px #fafafa",
       },
-    },
+    ],
   },
 }
 
-export default plugin(
+export const tailwindcssClay = plugin(
   ({ addUtilities, theme }) => {
-    const clay: Clay = theme("clay")
+    const clay: unknown = theme("clay")
+    if (!!clay && isClay(clay)) {
+      addUtilities(generateAllClayCss(clay))
+    } else {
+      throw new Error("tailwindcss-clay: can not get clay config info")
+    }
   },
   {
-    content: ["./src/**/*.{js,ts,jsx,tsx}"],
+    content: [],
     theme: themeWithClay,
   }
 )
 
-export const generateClayCss = (
-  color: Color,
-  shadowName: string,
-  shadowInfo: Shadow
-) => {
-  const acronyms = new Map([
-    ["small", "sm"],
-    ["medium", "md"],
-    ["large", "lg"],
-  ])
-
-  const shadowAcronym = acronyms.get(shadowName)
-  if (!shadowAcronym) {
-    throw new Error("Unknown shadow name")
-  } else {
-    return {
-      [`.clay-${shadowAcronym}-${color.name}`]: {
-        backgroundColor: color.backgroundColor,
-        boxShadow: `${shadowInfo.outsetShadow},${shadowInfo.insetShadowPrimary} ${color.insetShadowColorPrimary},${shadowInfo.insetShadowSecondary} ${color.insetShadowColorSecondary},${shadowInfo.insetShadowModifier}`,
-      },
-    }
-  }
+export const generateAllClayCss = (clay: Clay): CSSRuleObject[] => {
+  const { colors, shadows } = clay
+  const allClayCss: CSSRuleObject[] = []
+  colors.forEach((color) => {
+    shadows.forEach((shadow) => {
+      allClayCss.push(generateClayCss(color, shadow))
+    })
+  })
+  return allClayCss
 }
+
+export const generateClayCss = (color: Color, shadow: Shadow): CSSRuleObject => ({
+  [`.clay-${shadow.acronym ?? shadow.name}-${color.name}`]: {
+    backgroundColor: color.background,
+    boxShadow: `${shadow.outset},${shadow.insetPrimary} ${color.insetShadowPrimary},${shadow.insetSecondary} ${color.insetShadowSecondary},${shadow.insetModifier}`,
+  },
+})
