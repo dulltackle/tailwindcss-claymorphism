@@ -19,8 +19,9 @@ jobs:
           pnpm-version: ${{ env.pnpm-version }}
           node-version: ${{ env.node-version }}
       - run: pnpm run build
-      - run: |
+      - name: publish to npm
+        run: |
           pnpm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}"
-          pnpm publish
+          pnpm publish --no-git-checks
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
