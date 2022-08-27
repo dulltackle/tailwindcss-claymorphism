@@ -4,7 +4,7 @@ Add claymorphism style classes to your [Tailwind CSS](https://tailwindcss.com/do
 
 > This plugin is inspired by [clay.css](https://github.com/codeAdrian/clay.css).
 
-## About
+## Background
 
 > Claymorphism is a fresh new concept. The name was coined by [Michał Malewicz](https://hype4.academy/articles/design/claymorphism-in-user-interfaces) and the designers are excited to explore the possibilities of this approach to UI design.
 >
@@ -12,7 +12,7 @@ Add claymorphism style classes to your [Tailwind CSS](https://tailwindcss.com/do
 >
 > What sets claymorphism apart from neumorphism is that it floats above the background instead of being connected to it, eliminating accessibility issues and design restrictions of the latter.
 
-## Installation
+## Install
 
 With PNPM:
 
@@ -86,7 +86,6 @@ Then all you need to do is crafting the round corner with build-in utilities cla
 
 ![Rounded](https://s3.bmp.ovh/imgs/2022/08/05/6670a10fa0a9e383.png)
 
-## Roadmap
+## License
 
-- [ ] Customization guide
-- [ ] More colors
+[MIT](./LICENSE) License © 2022-Present [dulltackle](https://github.com/dulltackle)
