@@ -85,3 +85,7 @@ Then all you need to do is crafting the round corner with build-in utilities cla
 ```
 
 ![Rounded](https://s3.bmp.ovh/imgs/2022/08/05/6670a10fa0a9e383.png)
+
+## License
+
+[MIT](./LICENSE) License © 2022-Present [dulltackle](https://github.com/dulltackle)
