@@ -4,7 +4,7 @@ Add claymorphism style classes to your [Tailwind CSS](https://tailwindcss.com/do
 
 > This plugin is inspired by [clay.css](https://github.com/codeAdrian/clay.css).
 
-## About
+## Background
 
 > Claymorphism is a fresh new concept. The name was coined by [Michał Malewicz](https://hype4.academy/articles/design/claymorphism-in-user-interfaces) and the designers are excited to explore the possibilities of this approach to UI design.
 >
@@ -12,7 +12,7 @@ Add claymorphism style classes to your [Tailwind CSS](https://tailwindcss.com/do
 >
 > What sets claymorphism apart from neumorphism is that it floats above the background instead of being connected to it, eliminating accessibility issues and design restrictions of the latter.
 
-## Installation
+## Install
 
 With PNPM:
 
