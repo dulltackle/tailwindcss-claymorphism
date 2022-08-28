@@ -107,12 +107,17 @@ describe("generate clay css", () => {
 
 const generatePluginCss = async (config: Partial<Config>) => {
   const sandboxConfig: Config = {
+    // set files containing the class names
     content: ["./test/main.test.ts"],
+    // for testing convenience, disable the output of build-in classes
     corePlugins: [],
+    // now Tailwind would only output classes belonging to our plugin
     plugins: [tailwindcssClay],
   }
   const postcssPlugins = [tailwindcss(merge(sandboxConfig, config))]
 
+  // `"@tailwind utilities"` means output classes belonging to `utilities` only
+  // set `{ from: undefined }` just to peace the warning from PostCSS
   const result = await postcss(postcssPlugins).process("@tailwind utilities", { from: undefined })
   return result.css
 }
