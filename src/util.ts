@@ -14,8 +14,9 @@ function hasClayKeys(value: object): value is { [Property in keyof Clay]: unknow
 
 function isColor(value: unknown): value is Color {
   if (!!value && typeof value === "object" && hasColorKeys(value)) {
-    const colorValues = Object.values(value)
-    return colorValues.every((colorValue) => typeof colorValue === "string")
+    const { name, ...colorObject } = value
+    const colorValues = Object.values(colorObject)
+    return typeof name === "string" && colorValues.every((colorValue) => typeof colorValue === "string" && colorValue.startsWith("#"))
   } else {
     return false
   }
