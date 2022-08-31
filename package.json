@@ -30,7 +30,8 @@
     "lint": "eslint --quiet src/*",
     "typecheck": "tsc",
     "format": "prettier --write --ignore-unknown src/*",
-    "dev:test": "vitest"
+    "dev:test": "vitest",
+    "dev:e2e": "vite serve test/e2e/"
   },
   "devDependencies": {
     "@types/lodash.merge": "^4.6.7",
