@@ -1,5 +1,5 @@
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <div>Hello tailwindcss-claymorphism</div>
-`
+import "./index.css"
 
-export {}
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
+  <div class="text-red-500">Hello tailwindcss-claymorphism</div>
+`
