@@ -1,5 +1,8 @@
-import { Card } from "./card"
 import "./index.css"
+
+const Card = (): string => `<p class="h-full clay-md-red">
+  Hello tailwindcss-claymorphism
+</p>`
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div class="flex flex-wrap">
