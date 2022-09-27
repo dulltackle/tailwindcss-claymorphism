@@ -10,11 +10,13 @@ const Card = (clayClassName: string): string => `<li class="aspect-video p-2">
   </div>
 </li>`
 
+const Button = (clayClassName: string): string => "hi"
+
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <ul class="grid" style="grid-template-columns: repeat(${COLUMN_AMOUNT}, 1fr)">
-    ${CLAY_CLASS_NAMES.map((color) => color.map((clayClassName) => Card(clayClassName))).reduce(
-      (previousValue, currentValue) => `${previousValue} ${currentValue.join(" ")}`,
-      ""
-    )}
+    ${CLAY_CLASS_NAMES.map((clayColor) => {
+      const [clayColorSmall, clayColorMiddle] = clayColor
+      return [Card(clayColorMiddle), Button(clayColorSmall)].join(" ")
+    }).join(" ")}
   </ul>
 `
