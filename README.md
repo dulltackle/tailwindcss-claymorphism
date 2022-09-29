@@ -86,6 +86,12 @@ Then all you need to do is crafting the round corner with build-in utilities cla
 
 ![Rounded](https://s3.bmp.ovh/imgs/2022/08/05/6670a10fa0a9e383.png)
 
+## Color Palettes
+
+|        utility class        |                          background-color                           |
+| :-------------------------: | :-----------------------------------------------------------------: |
+| `clay-sm-red`/`clay-md-red` | <div style="background-color: #f87171; color: white" >#f87171</div> |
+
 ## License
 
 [MIT](./LICENSE) License © 2022-Present [dulltackle](https://github.com/dulltackle)
