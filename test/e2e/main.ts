@@ -2,7 +2,10 @@ import "./index.css"
 
 const COLUMN_AMOUNT = 4
 
-const CLAY_CLASS_NAMES: [string, string][] = [["clay-sm-red", "clay-md-red"]]
+const CLAY_CLASS_NAMES: [string, string][] = [
+  ["clay-sm-red", "clay-md-red"],
+  ["clay-sm-orange", "clay-md-orange"],
+]
 
 const Card = (clayClassName: string): string => `
   <div class="aspect-video flex items-center ${clayClassName} rounded-2xl">
