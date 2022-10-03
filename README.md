@@ -92,7 +92,8 @@ Then all you need to do is crafting the round corner with build-in utilities cla
 | :-------------------------: | :-----------------------------------------------------------------: |
 | `clay-sm-red`/`clay-md-red` | ![#f87171](https://user-images.githubusercontent.com/45963660/193528975-acc97d29-f3d2-4927-aae4-f599a0d95424.svg) `#f87171` |
 | `clay-sm-orange`/`clay-md-orange` | ![#fb923c](https://user-images.githubusercontent.com/45963660/193531101-3424e770-f2c7-4729-bec4-32dc3a70882b.svg) `#fb923c` |
-| `clay-sm-amber`/`clay-md-amber` |  ![#fbbf24](https://user-images.githubusercontent.com/45963660/193533141-0fb8bdb6-d597-48d3-bad7-0f537ab57749.svg) `#fbbf24` |
+| `clay-sm-amber`/`clay-md-amber` | ![#fbbf24](https://user-images.githubusercontent.com/45963660/193533141-0fb8bdb6-d597-48d3-bad7-0f537ab57749.svg) `#fbbf24` |
+| `clay-sm-yellow`/`clay-md-yellow` | ![#facc15](https://user-images.githubusercontent.com/45963660/193536758-2a4571ae-2f5f-46a2-8e74-80134103df5d.svg) `#facc15` |
 
 ## License
 
