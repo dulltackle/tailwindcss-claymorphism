@@ -41,4 +41,10 @@ export const defaultColors: Color[] = [
     insetShadowPrimary: "#10b981",
     insetShadowSecondary: "#6ee7b7",
   },
+  {
+    name: "teal",
+    background: "#2dd4bf",
+    insetShadowPrimary: "#14b8a6",
+    insetShadowSecondary: "#5eead4",
+  },
 ]
