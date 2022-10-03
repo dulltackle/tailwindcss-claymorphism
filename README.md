@@ -97,6 +97,7 @@ Then all you need to do is crafting the round corner with build-in utilities cla
 | `clay-sm-lime`/`clay-md-lime` | ![#a3e635](https://user-images.githubusercontent.com/45963660/193538028-a1ab7743-10b6-4515-8341-ee57d5c251d5.svg) `#a3e635` |
 | `clay-sm-green`/`clay-md-green` | ![#4ade80](https://user-images.githubusercontent.com/45963660/193541267-b9f8db4b-5310-46fa-8cad-c18e63f11216.svg) `#4ade80` |
 | `clay-sm-emerald`/`clay-md-emerald` | ![#34d399](https://user-images.githubusercontent.com/45963660/193543102-00c37f77-82b5-4c95-b608-e4381baea2b2.svg) `#34d399` |
+| `clay-sm-teal`/`clay-md-teal` | ![#2dd4bf](https://user-images.githubusercontent.com/45963660/193544174-c7bcf873-869a-4c99-89a4-2476d8950386.svg) `#2dd4bf` |
 
 ## License
 
