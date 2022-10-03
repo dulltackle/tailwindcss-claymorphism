@@ -91,7 +91,10 @@ Then all you need to do is crafting the round corner with build-in utilities cla
 |        utility class        |                          background-color                           |
 | :-------------------------: | :-----------------------------------------------------------------: |
 | `clay-sm-red`/`clay-md-red` | ![#f87171](https://user-images.githubusercontent.com/45963660/193528975-acc97d29-f3d2-4927-aae4-f599a0d95424.svg) `#f87171` |
+| `clay-sm-orange`/`clay-md-orange` | ![#fb923c](https://user-images.githubusercontent.com/45963660/193531101-3424e770-f2c7-4729-bec4-32dc3a70882b.svg) `#fb923c` |
+
 
 ## License
 
 [MIT](./LICENSE) License © 2022-Present [dulltackle](https://github.com/dulltackle)
+
