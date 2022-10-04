@@ -3,6 +3,7 @@ import "./index.css"
 const COLUMN_AMOUNT = 4
 
 const CLAY_CLASS_NAMES: [string, string][] = [
+  ["clay-sm-slate", "clay-md-slate"],
   ["clay-sm-red", "clay-md-red"],
   ["clay-sm-orange", "clay-md-orange"],
   ["clay-sm-amber", "clay-md-amber"],
