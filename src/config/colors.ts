@@ -53,4 +53,10 @@ export const defaultColors: Color[] = [
     insetShadowPrimary: "#06b6d4",
     insetShadowSecondary: "#cffafe",
   },
+  {
+    name: "sky",
+    background: "#38bdf8",
+    insetShadowPrimary: "#0ea5e9",
+    insetShadowSecondary: "#bae6fd",
+  },
 ]
