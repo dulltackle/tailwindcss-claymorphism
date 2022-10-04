@@ -13,6 +13,7 @@ const CLAY_CLASS_NAMES: [string, string][] = [
   ["clay-sm-teal", "clay-md-teal"],
   ["clay-sm-cyan", "clay-md-cyan"],
   ["clay-sm-sky", "clay-md-sky"],
+  ["clay-sm-blue", "clay-md-blue"],
 ]
 
 const Card = (clayClassName: string): string => `
