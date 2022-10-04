@@ -91,6 +91,7 @@ Then all you need to do is crafting the round corner with build-in utilities cla
 |        utility class        |                          background-color                           |
 | :-------------------------: | :-----------------------------------------------------------------: |
 | `clay-sm-slate`/`clay-md-slate` | ![#94a3b8](https://user-images.githubusercontent.com/45963660/193768786-2da3aad7-e197-4094-a05f-ea5cc1c2e923.svg) `#94a3b8` |
+| `clay-sm-gray`/`clay-md-gray` | ![#9ca3af](https://user-images.githubusercontent.com/45963660/193769446-812598b5-268b-4da0-b356-edbbda856ffa.svg) `#9ca3af` |
 | `clay-sm-red`/`clay-md-red` | ![#f87171](https://user-images.githubusercontent.com/45963660/193528975-acc97d29-f3d2-4927-aae4-f599a0d95424.svg) `#f87171` |
 | `clay-sm-orange`/`clay-md-orange` | ![#fb923c](https://user-images.githubusercontent.com/45963660/193531101-3424e770-f2c7-4729-bec4-32dc3a70882b.svg) `#fb923c` |
 | `clay-sm-amber`/`clay-md-amber` | ![#fbbf24](https://user-images.githubusercontent.com/45963660/193533141-0fb8bdb6-d597-48d3-bad7-0f537ab57749.svg) `#fbbf24` |
