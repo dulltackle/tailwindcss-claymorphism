@@ -88,6 +88,8 @@ Then all you need to do is crafting the round corner with build-in utilities cla
 
 ## Color Palettes
 
+![color-palettes](https://user-images.githubusercontent.com/45963660/194522584-05f5607b-0c7c-4cf8-bda8-3993846ba4f8.png)
+
 |            utility class            |                                                      background-color                                                       |
 | :---------------------------------: | :-------------------------------------------------------------------------------------------------------------------------: |
 |   `clay-sm-slate`/`clay-md-slate`   | ![#94a3b8](https://user-images.githubusercontent.com/45963660/193768786-2da3aad7-e197-4094-a05f-ea5cc1c2e923.svg) `#94a3b8` |
