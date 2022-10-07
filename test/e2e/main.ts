@@ -40,7 +40,7 @@ const Button = (clayClassName: string): string => `
 `
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <ul class="grid" style="grid-template-columns: repeat(${COLUMN_AMOUNT}, 1fr)">
+  <ul class="grid p-6" style="grid-template-columns: repeat(${COLUMN_AMOUNT}, 1fr)">
     ${CLAY_CLASS_NAMES.map((clayColor) => {
       const [clayColorSmall, clayColorMiddle] = clayColor
       return `
