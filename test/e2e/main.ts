@@ -3,16 +3,9 @@ import "./index.css"
 const COLUMN_AMOUNT = 4
 
 const CLAY_CLASS_NAMES: [string, string][] = [
-  ["clay-sm-slate", "clay-md-slate"],
-  ["clay-sm-gray", "clay-md-gray"],
-  ["clay-sm-zinc", "clay-md-zinc"],
-  ["clay-sm-neutral", "clay-md-neutral"],
-  ["clay-sm-stone", "clay-md-stone"],
   ["clay-sm-red", "clay-md-red"],
   ["clay-sm-orange", "clay-md-orange"],
-  ["clay-sm-amber", "clay-md-amber"],
   ["clay-sm-yellow", "clay-md-yellow"],
-  ["clay-sm-lime", "clay-md-lime"],
   ["clay-sm-green", "clay-md-green"],
   ["clay-sm-emerald", "clay-md-emerald"],
   ["clay-sm-teal", "clay-md-teal"],
@@ -25,6 +18,13 @@ const CLAY_CLASS_NAMES: [string, string][] = [
   ["clay-sm-fuchsia", "clay-md-fuchsia"],
   ["clay-sm-pink", "clay-md-pink"],
   ["clay-sm-rose", "clay-md-rose"],
+  ["clay-sm-lime", "clay-md-lime"],
+  ["clay-sm-amber", "clay-md-amber"],
+  ["clay-sm-slate", "clay-md-slate"],
+  ["clay-sm-gray", "clay-md-gray"],
+  ["clay-sm-zinc", "clay-md-zinc"],
+  ["clay-sm-neutral", "clay-md-neutral"],
+  ["clay-sm-stone", "clay-md-stone"],
 ]
 
 const Card = (clayClassName: string): string => `
