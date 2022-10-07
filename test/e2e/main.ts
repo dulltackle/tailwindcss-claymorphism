@@ -7,6 +7,7 @@ const CLAY_CLASS_NAMES: [string, string][] = [
   ["clay-sm-gray", "clay-md-gray"],
   ["clay-sm-zinc", "clay-md-zinc"],
   ["clay-sm-neutral", "clay-md-neutral"],
+  ["clay-sm-stone", "clay-md-stone"],
   ["clay-sm-red", "clay-md-red"],
   ["clay-sm-orange", "clay-md-orange"],
   ["clay-sm-amber", "clay-md-amber"],
