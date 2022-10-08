@@ -9,7 +9,30 @@ beforeAll(() => {
   expect.extend({ toMatchCss: cssMatcher })
 })
 
-describe("generate clay css", () => {
+describe("test helper functions for generating clay utility class ", () => {
+  test("generateClayCss() for generating a clay utility class with a color and a shadow", ({ expect }) => {
+    const mockedColor: Color = {
+      name: "navajo",
+      background: "#e2c599",
+      insetShadowPrimary: "#af967f",
+      insetShadowSecondary: "#feeed4",
+    }
+    const mockedShadow: Shadow = {
+      name: "large",
+      acronym: "lg",
+      outset: "12px 12px 24px rgba(0, 0, 0, .25)",
+      insetPrimary: "inset -12px -12px 48px",
+      insetSecondary: "inset 12px 12px 24px",
+      insetModifier: "inset -3px -3px 6px #fafafa",
+    }
+    expect(generateClayCss(mockedColor, mockedShadow)).toEqual({
+      [".clay-lg-navajo"]: {
+        backgroundColor: "#e2c599",
+        boxShadow: "12px 12px 24px rgba(0, 0, 0, .25),inset -12px -12px 48px #af967f,inset 12px 12px 24px #feeed4,inset -3px -3px 6px #fafafa",
+      },
+    })
+  })
+
   const colors = [
     {
       name: "red",
@@ -42,38 +65,6 @@ describe("generate clay css", () => {
       insetModifier: "inset -1px -1px 2px #fafafa",
     },
   ]
-  test("generate a clay css with a color and a shadow", ({ expect }) => {
-    const [red, orange] = colors
-    const [md, sm] = shadows
-    const mediumRed = {
-      [".clay-md-red"]: {
-        backgroundColor: "#f87171",
-        boxShadow: "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #ef4444,inset 8px 8px 16px #fca5a5,inset -2px -2px 4px #fafafa",
-      },
-    }
-    const smallRed = {
-      [".clay-sm-red"]: {
-        backgroundColor: "#f87171",
-        boxShadow: "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #ef4444,inset 4px 4px 8px #fca5a5,inset -1px -1px 2px #fafafa",
-      },
-    }
-    const mediumOrange = {
-      [".clay-md-orange"]: {
-        backgroundColor: "#fb923c",
-        boxShadow: "8px 8px 16px rgba(0, 0, 0, .25),inset -8px -8px 32px #f97316,inset 8px 8px 16px #fdba74,inset -2px -2px 4px #fafafa",
-      },
-    }
-    const smallOrange = {
-      [".clay-sm-orange"]: {
-        backgroundColor: "#fb923c",
-        boxShadow: "4px 4px 8px rgba(0, 0, 0, .25),inset -4px -4px 16px #f97316,inset 4px 4px 8px #fdba74,inset -1px -1px 2px #fafafa",
-      },
-    }
-    expect(generateClayCss(red, md)).toEqual(mediumRed)
-    expect(generateClayCss(red, sm)).toEqual(smallRed)
-    expect(generateClayCss(orange, md)).toEqual(mediumOrange)
-    expect(generateClayCss(orange, sm)).toEqual(smallOrange)
-  })
   test("generate clay css with colors and shadows", ({ expect }) => {
     const aimedClayCss = [
       {
