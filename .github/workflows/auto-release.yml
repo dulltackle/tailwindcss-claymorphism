@@ -1,0 +1,16 @@
+name: Auto Release
+
+on:
+  push:
+    branches:
+      - "main"
+    tags:
+      - "v*"
+
+jobs:
+  auto-release:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh release create --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
