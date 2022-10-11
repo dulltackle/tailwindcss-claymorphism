@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-claymorphism",
-  "version": "0.9.2",
+  "version": "0.10.0",
   "description": "Tailwind CSS plugin to generate claymorphism style utilities",
   "license": "MIT",
   "main": "dist/index.cjs",
