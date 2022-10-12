@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: gh release create $TAG --generate-notes
+      - run: gh release create $GITHUB_REF_NAME --generate-notes
         env:
-          TAG: ${{ github.action_ref }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
