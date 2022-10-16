@@ -3,7 +3,7 @@ import postcss from "postcss"
 import tailwindcss, { Config } from "tailwindcss"
 import { beforeAll, describe, expect, test } from "vitest"
 import { generateAllClayCss, generateClayCss, tailwindcssClay } from "~/main"
-import { cssMatcher } from "./matcher"
+import { cssMatcher } from "./util/matcher"
 
 beforeAll(() => {
   expect.extend({ toMatchCss: cssMatcher })
