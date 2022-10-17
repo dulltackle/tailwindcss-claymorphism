@@ -7,7 +7,7 @@ import tailwindcssClay from "~/export"
 
 export * from "./strings"
 
-export const run = (userConfig: Config) => {
+export const runPlugin = async (userConfig: Config) => {
   const testName = expect.getState().currentTestName ?? "Test name not found"
 
   const sandboxConfig = merge(userConfig, {
@@ -19,7 +19,9 @@ export const run = (userConfig: Config) => {
 
   // `"@tailwind utilities"` means that Tailwind would only output classes belonging to `utilities`
   // for more information about `utilities`, see https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer
-  return postcss(tailwind(sandboxConfig)).process("@tailwind utilities", {
+  const result = await postcss(tailwind(sandboxConfig)).process("@tailwind utilities", {
     from: `${path.resolve(__filename)}?test=${testName}`,
   })
+
+  return result.css
 }
