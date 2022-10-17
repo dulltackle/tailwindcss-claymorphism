@@ -1,5 +1,4 @@
-interface Color {
-  name: string
+interface ClayColor {
   background: string
   insetShadowPrimary: string
   insetShadowSecondary: string
