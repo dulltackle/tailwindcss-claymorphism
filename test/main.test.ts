@@ -111,15 +111,12 @@ describe.each([
     config: {
       theme: {
         extend: {
-          clay: {
-            colors: [
-              {
-                name: "navajo",
-                background: "#e2c599",
-                insetShadowPrimary: "#af967f",
-                insetShadowSecondary: "#feeed4",
-              },
-            ],
+          clayColors: {
+            navajo: {
+              background: "#e2c599",
+              insetShadowPrimary: "#af967f",
+              insetShadowSecondary: "#feeed4",
+            },
           },
         },
       },
@@ -137,17 +134,13 @@ describe.each([
     config: {
       theme: {
         extend: {
-          clay: {
-            shadows: [
-              {
-                name: "large",
-                acronym: "lg",
-                outset: "12px 12px 24px rgba(0, 0, 0, .25)",
-                insetPrimary: "inset -12px -12px 48px",
-                insetSecondary: "inset 12px 12px 24px",
-                insetModifier: "inset -3px -3px 6px #fafafa",
-              },
-            ],
+          clayShadows: {
+            lg: {
+              outset: "12px 12px 24px rgba(0, 0, 0, .25)",
+              insetPrimary: "inset -12px -12px 48px",
+              insetSecondary: "inset 12px 12px 24px",
+              insetModifier: "inset -3px -3px 6px #fafafa",
+            },
           },
         },
       },
