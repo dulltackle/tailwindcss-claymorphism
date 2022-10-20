@@ -1,18 +1,13 @@
 import plugin from "tailwindcss/plugin"
 import type { CSSRuleObject } from "tailwindcss/types/config"
-import { defaultColors, defaultShadows } from "./config"
+import { defaultClayColors, defaultClayShadows } from "./config"
 import { isClay } from "./util"
-
-export const themeWithClay: { clay: Clay } = {
-  clay: {
-    colors: defaultColors,
-    shadows: defaultShadows,
-  },
-}
 
 export const tailwindcssClay = plugin(
   ({ addUtilities, theme }) => {
-    const clay: unknown = theme("clay")
+    const clayColors: unknown = theme("clayColors")
+    const clayShadows: unknown = theme("clayShadows")
+
     if (!!clay && isClay(clay)) {
       addUtilities(generateAllClayCss(clay))
     } else {
@@ -21,7 +16,10 @@ export const tailwindcssClay = plugin(
   },
   {
     content: [],
-    theme: themeWithClay,
+    theme: {
+      clayColors: defaultClayColors,
+      clayShadows: defaultClayShadows,
+    },
   }
 )
 
