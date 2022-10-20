@@ -4,9 +4,7 @@ interface ClayColor {
   insetShadowSecondary: string
 }
 
-interface Shadow {
-  name: string
-  acronym?: string
+interface ClayShadow {
   outset: string
   insetPrimary: string
   insetSecondary: string
