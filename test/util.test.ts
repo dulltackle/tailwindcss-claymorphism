@@ -1,164 +1,31 @@
 import { describe, test } from "vitest"
-import { isClay } from "~/util"
+import { isClayColor, isClayShadow } from "~/util"
 
-describe.each([
-  {
-    aimedResult: true,
-    input: {
-      colors: [
-        {
-          name: "red",
-          background: "#f87171",
-          insetShadowPrimary: "#ef4444",
-          insetShadowSecondary: "#fca5a5",
-        },
-      ],
-      shadows: [
-        {
-          name: "medium",
-          acronym: "md",
-          outset: "8px 8px 16px rgba(0, 0, 0, .25)",
-          insetPrimary: "inset -8px -8px 32px",
-          insetSecondary: "inset 8px 8px 16px",
-          insetModifier: "inset -2px -2px 4px #fafafa",
-        },
-        {
-          name: "small",
-          acronym: "sm",
-          outset: "4px 4px 8px rgba(0, 0, 0, .25)",
-          insetPrimary: "inset -4px -4px 16px",
-          insetSecondary: "inset 4px 4px 8px",
-          insetModifier: "inset -1px -1px 2px #fafafa",
-        },
-      ],
-    },
-  },
-  {
-    aimedResult: false,
-    input: {
-      // `colors` is missing
-      shadows: [
-        {
-          name: "medium",
-          acronym: "md",
-          outset: "8px 8px 16px rgba(0, 0, 0, .25)",
-          insetPrimary: "inset -8px -8px 32px",
-          insetSecondary: "inset 8px 8px 16px",
-          insetModifier: "inset -2px -2px 4px #fafafa",
-        },
-        {
-          name: "small",
-          acronym: "sm",
-          outset: "4px 4px 8px rgba(0, 0, 0, .25)",
-          insetPrimary: "inset -4px -4px 16px",
-          insetSecondary: "inset 4px 4px 8px",
-          insetModifier: "inset -1px -1px 2px #fafafa",
-        },
-      ],
-    },
-  },
-  {
-    aimedResult: false,
-    input: {
-      colors: [
-        {
-          name: "red",
-          background: "#f87171",
-          insetShadowPrimary: "#ef4444",
-          insetShadowSecondary: "#fca5a5",
-        },
-      ],
-      // type of `shadows` is not `Array`
-      shadows: {
-        name: "medium",
-        acronym: "md",
-        outset: "8px 8px 16px rgba(0, 0, 0, .25)",
-        insetPrimary: "inset -8px -8px 32px",
-        insetSecondary: "inset 8px 8px 16px",
-        insetModifier: "inset -2px -2px 4px #fafafa",
-      },
-    },
-  },
-  {
-    aimedResult: false,
-    input: {
-      colors: [
-        {
-          // `name` and `insetShadowSecondary` are missing
-          background: "#f87171",
-          insetShadowPrimary: "#ef4444",
-        },
-      ],
-      shadows: [
-        {
-          name: "medium",
-          acronym: "md",
-          outset: "8px 8px 16px rgba(0, 0, 0, .25)",
-          insetPrimary: "inset -8px -8px 32px",
-          insetSecondary: "inset 8px 8px 16px",
-          insetModifier: "inset -2px -2px 4px #fafafa",
-        },
-      ],
-    },
-  },
-  {
-    aimedResult: false,
-    input: {
-      colors: [
-        {
-          name: "red",
-          background: "#f87171",
-          insetShadowPrimary: "#ef4444",
-          insetShadowSecondary: "#fca5a5",
-        },
-      ],
-      shadows: [
-        {
-          // type of `name` is not `string`
-          name: 33,
-          acronym: "md",
-          outset: "8px 8px 16px rgba(0, 0, 0, .25)",
-          insetPrimary: "inset -8px -8px 32px",
-          insetSecondary: "inset 8px 8px 16px",
-          insetModifier: "inset -2px -2px 4px #fafafa",
-        },
-      ],
-    },
-  },
-  {
-    aimedResult: false,
-    input: {
-      colors: [
-        {
-          // value of color accepts HEX only
-          name: "red",
-          background: "rgba(27,31,36,0.15)",
-          insetShadowPrimary: "hwb(213deg 14% 82%)",
-          insetShadowSecondary: "hsl(213deg 13% 16%)",
-        },
-      ],
-      shadows: [
-        {
-          name: "medium",
-          acronym: "md",
-          outset: "8px 8px 16px rgba(0, 0, 0, .25)",
-          insetPrimary: "inset -8px -8px 32px",
-          insetSecondary: "inset 8px 8px 16px",
-          insetModifier: "inset -2px -2px 4px #fafafa",
-        },
-        {
-          name: "small",
-          acronym: "sm",
-          outset: "4px 4px 8px rgba(0, 0, 0, .25)",
-          insetPrimary: "inset -4px -4px 16px",
-          insetSecondary: "inset 4px 4px 8px",
-          insetModifier: "inset -1px -1px 2px #fafafa",
-        },
-      ],
-    },
-  },
-])("isClay()", ({ input, aimedResult }) => {
-  test("isClay() should judge the type of input is `Clay` or not", ({ expect }) => {
-    expect(isClay(input)).toBe(aimedResult)
+describe("isClayColor() judges the type of input is ClayColor or not", () => {
+  test("isClayColor() should return true when the type of input is ClayColor", ({ expect }) => {
+    const input: ClayColor = {
+      background: "#f87171",
+      insetShadowPrimary: "#ef4444",
+      insetShadowSecondary: "#fca5a5",
+    }
+
+    const result = isClayColor(input)
+
+    expect(result).toBeTruthy()
+  })
+})
+
+describe("isClayShadow() judges the type of input is isClayShadow or not", () => {
+  test("isClayShadow() should return true when the type of input is isClayShadow", ({ expect }) => {
+    const input: ClayShadow = {
+      outset: "8px 8px 16px rgba(0, 0, 0, .25)",
+      insetPrimary: "inset -8px -8px 32px",
+      insetSecondary: "inset 8px 8px 16px",
+      insetModifier: "inset -2px -2px 4px #fafafa",
+    }
+
+    const result = isClayShadow(input)
+
+    expect(result).toBeTruthy()
   })
 })
