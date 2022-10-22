@@ -31,21 +31,6 @@ export const tailwindcssClay = plugin(
     } else {
       throw new Error("tailwindcss-clay: can not get clay config info")
     }
-
-    //     (
-    //       Object.entries(clayShadows).flatMap(([shadowName, shadowValues]) => (  [`.clay-${shadowName}-${colorName}`, {
-    //     backgroundColor: color.background,
-    //     boxShadow: `${shadow.outset},${shadow.insetPrimary} ${color.insetShadowPrimary},${shadow.insetSecondary} ${color.insetShadowSecondary},${shadow.insetModifier}`,
-    //   }]
-    //         ,
-    // ))
-    //     ))
-
-    // if (!!clay && isClay(clay)) {
-    //   addUtilities(generateAllClayCss(clay))
-    // } else {
-    //   throw new Error("tailwindcss-clay: can not get clay config info")
-    // }
   },
   {
     content: [],
@@ -55,21 +40,3 @@ export const tailwindcssClay = plugin(
     },
   }
 )
-
-// export const generateAllClayCss = (clay: Clay): CSSRuleObject[] => {
-//   const { colors, shadows } = clay
-//   const allClayCss: CSSRuleObject[] = []
-//   colors.forEach((color) => {
-//     shadows.forEach((shadow) => {
-//       allClayCss.push(generateClayCss(color, shadow))
-//     })
-//   })
-//   return allClayCss
-// }
-
-// export const generateClayCss = (color: Color, shadow: Shadow): CSSRuleObject => ({
-//   [`.clay-${shadow.acronym ?? shadow.name}-${color.name}`]: {
-//     backgroundColor: color.background,
-//     boxShadow: `${shadow.outset},${shadow.insetPrimary} ${color.insetShadowPrimary},${shadow.insetSecondary} ${color.insetShadowSecondary},${shadow.insetModifier}`,
-//   },
-// })
