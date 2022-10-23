@@ -1,4 +1,4 @@
-import { describe, test } from "vitest"
+import { describe, expect, test } from "vitest"
 import { isClayColor, isClayShadow } from "~/util"
 
 describe("isClayColor() judges the type of input is ClayColor or not", () => {
@@ -12,6 +12,26 @@ describe("isClayColor() judges the type of input is ClayColor or not", () => {
     const result = isClayColor(input)
 
     expect(result).toBeTruthy()
+  })
+  test.each([
+    {
+      input: {
+        background: "#f87171",
+        // mistyped value
+        insetShadowPrimary: 5,
+        insetShadowSecondary: "#fca5a5",
+      },
+    },
+    {
+      input: {
+        background: "#f87171",
+        insetShadowPrimary: "#ef4444",
+        // mistyped property
+        insetShadowThird: "#fca5a5",
+      },
+    },
+  ])("isClayColor() should throw an error when the type of input is not ClayColor", ({ input }) => {
+    expect(() => isClayColor(input)).toThrowError()
   })
 })
 
