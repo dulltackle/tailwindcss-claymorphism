@@ -1,4 +1,4 @@
 import { isClayShadow } from "./clay-shadow"
-import { isClayColor } from "./isClayColor"
+import { assertClayColor, isClayColor } from "./isClayColor"
 
-export { isClayColor, isClayShadow }
+export { assertClayColor, isClayColor, isClayShadow }

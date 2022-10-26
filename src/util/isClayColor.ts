@@ -1,3 +1,7 @@
+export function assertClayColor(value: unknown): asserts value is ClayColor {
+  if (!isClayColor(value)) throw new Error(`tailwindcss-clay: clay color config is not correct`)
+}
+
 export function isClayColor(value: unknown): value is ClayColor {
   if (!!value && typeof value === "object" && hasClayColorKeys(value)) {
     const clayColorValues = Object.values(value)
