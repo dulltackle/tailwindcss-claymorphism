@@ -1,5 +1,5 @@
-import { isClayShadow } from "./clay-shadow"
 import { assertClayColor } from "./isClayColor"
+import { isClayShadow } from "./isClayShadow"
 
 interface Props {
   clayColors: unknown
