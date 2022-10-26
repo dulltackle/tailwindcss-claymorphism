@@ -1,4 +1,4 @@
-import { defaultColors } from "./colors"
-import { defaultShadows } from "./shadows"
+import { defaultClayColors } from "./colors"
+import { defaultClayShadows } from "./shadows"
 
-export { defaultColors, defaultShadows }
+export { defaultClayColors, defaultClayShadows }

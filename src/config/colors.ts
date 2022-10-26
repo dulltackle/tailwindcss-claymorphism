@@ -1,134 +1,114 @@
-export const defaultColors: Color[] = [
-  {
-    name: "slate",
-    background: "#94a3b8",
-    insetShadowPrimary: "#64748b",
-    insetShadowSecondary: "#e2e8f0",
+import colors from "tailwindcss/colors"
+
+export const defaultClayColors: Record<string, ClayColor> = {
+  slate: {
+    background: colors.slate[400],
+    insetShadowPrimary: colors.slate[500],
+    insetShadowSecondary: colors.slate[200],
   },
-  {
-    name: "gray",
-    background: "#9ca3af",
-    insetShadowPrimary: "#6b7280",
-    insetShadowSecondary: "#e5e7eb",
+  gray: {
+    background: colors.gray[400],
+    insetShadowPrimary: colors.gray[500],
+    insetShadowSecondary: colors.gray[200],
   },
-  {
-    name: "zinc",
-    background: "#a1a1aa",
-    insetShadowPrimary: "#71717a",
-    insetShadowSecondary: "#e4e4e7",
+  zinc: {
+    background: colors.zinc[400],
+    insetShadowPrimary: colors.zinc[500],
+    insetShadowSecondary: colors.zinc[200],
   },
-  {
-    name: "neutral",
-    background: "#a3a3a3",
-    insetShadowPrimary: "#737373",
-    insetShadowSecondary: "#e5e5e5",
+  neutral: {
+    background: colors.neutral[400],
+    insetShadowPrimary: colors.neutral[500],
+    insetShadowSecondary: colors.neutral[200],
   },
-  {
-    name: "stone",
-    background: "#a8a29e",
-    insetShadowPrimary: "#78716c",
-    insetShadowSecondary: "#e7e5e4",
+  stone: {
+    background: colors.stone[400],
+    insetShadowPrimary: colors.stone[500],
+    insetShadowSecondary: colors.stone[200],
   },
-  {
-    name: "red",
-    background: "#f87171",
-    insetShadowPrimary: "#ef4444",
-    insetShadowSecondary: "#fecaca",
+  red: {
+    background: colors.red[400],
+    insetShadowPrimary: colors.red[500],
+    insetShadowSecondary: colors.red[200],
   },
-  {
-    name: "orange",
-    background: "#fb923c",
-    insetShadowPrimary: "#f97316",
-    insetShadowSecondary: "#fed7aa",
+  orange: {
+    background: colors.orange[400],
+    insetShadowPrimary: colors.orange[500],
+    insetShadowSecondary: colors.orange[200],
   },
-  {
-    name: "amber",
-    background: "#fbbf24",
-    insetShadowPrimary: "#f59e0b",
-    insetShadowSecondary: "#fde68a",
+  amber: {
+    background: colors.amber[400],
+    insetShadowPrimary: colors.amber[500],
+    insetShadowSecondary: colors.amber[200],
   },
-  {
-    name: "yellow",
-    background: "#facc15",
-    insetShadowPrimary: "#eab308",
-    insetShadowSecondary: "#fef08a",
+  yellow: {
+    background: colors.yellow[400],
+    insetShadowPrimary: colors.yellow[500],
+    insetShadowSecondary: colors.yellow[200],
   },
-  {
-    name: "lime",
-    background: "#a3e635",
-    insetShadowPrimary: "#84cc16",
-    insetShadowSecondary: "#d9f99d",
+  lime: {
+    background: colors.lime[400],
+    insetShadowPrimary: colors.lime[500],
+    insetShadowSecondary: colors.lime[200],
   },
-  {
-    name: "green",
-    background: "#4ade80",
-    insetShadowPrimary: "#22c55e",
-    insetShadowSecondary: "#bbf7d0",
+  green: {
+    background: colors.green[400],
+    insetShadowPrimary: colors.green[500],
+    insetShadowSecondary: colors.green[200],
   },
-  {
-    name: "emerald",
-    background: "#34d399",
-    insetShadowPrimary: "#10b981",
-    insetShadowSecondary: "#a7f3d0",
+  emerald: {
+    background: colors.emerald[400],
+    insetShadowPrimary: colors.emerald[500],
+    insetShadowSecondary: colors.emerald[200],
   },
-  {
-    name: "teal",
-    background: "#2dd4bf",
-    insetShadowPrimary: "#14b8a6",
-    insetShadowSecondary: "#99f6e4",
+  teal: {
+    background: colors.teal[400],
+    insetShadowPrimary: colors.teal[500],
+    insetShadowSecondary: colors.teal[200],
   },
-  {
-    name: "cyan",
-    background: "#22d3ee",
-    insetShadowPrimary: "#06b6d4",
-    insetShadowSecondary: "#a5f3fc",
+  cyan: {
+    background: colors.cyan[400],
+    insetShadowPrimary: colors.cyan[500],
+    insetShadowSecondary: colors.cyan[200],
   },
-  {
-    name: "sky",
-    background: "#38bdf8",
-    insetShadowPrimary: "#0ea5e9",
-    insetShadowSecondary: "#bae6fd",
+  sky: {
+    background: colors.sky[400],
+    insetShadowPrimary: colors.sky[500],
+    insetShadowSecondary: colors.sky[200],
   },
-  {
-    name: "blue",
-    background: "#60a5fa",
-    insetShadowPrimary: "#3b82f6",
-    insetShadowSecondary: "#bfdbfe",
+  blue: {
+    background: colors.blue[400],
+    insetShadowPrimary: colors.blue[500],
+    insetShadowSecondary: colors.blue[200],
   },
-  {
-    name: "indigo",
-    background: "#818cf8",
-    insetShadowPrimary: "#6366f1",
-    insetShadowSecondary: "#c7d2fe",
+  indigo: {
+    background: colors.indigo[400],
+    insetShadowPrimary: colors.indigo[500],
+    insetShadowSecondary: colors.indigo[200],
   },
-  {
-    name: "violet",
-    background: "#a78bfa",
-    insetShadowPrimary: "#8b5cf6",
-    insetShadowSecondary: "#ddd6fe",
+  violet: {
+    background: colors.violet[400],
+    insetShadowPrimary: colors.violet[500],
+    insetShadowSecondary: colors.violet[200],
   },
-  {
-    name: "purple",
-    background: "#c084fc",
-    insetShadowPrimary: "#a855f7",
-    insetShadowSecondary: "#e9d5ff",
+  purple: {
+    background: colors.purple[400],
+    insetShadowPrimary: colors.purple[500],
+    insetShadowSecondary: colors.purple[200],
   },
-  {
-    name: "fuchsia",
-    background: "#e879f9",
-    insetShadowPrimary: "#d946ef",
-    insetShadowSecondary: "#f5d0fe",
+  fuchsia: {
+    background: colors.fuchsia[400],
+    insetShadowPrimary: colors.fuchsia[500],
+    insetShadowSecondary: colors.fuchsia[200],
   },
-  {
-    name: "pink",
-    background: "#f472b6",
-    insetShadowPrimary: "#ec4899",
-    insetShadowSecondary: "#fbcfe8",
+  pink: {
+    background: colors.pink[400],
+    insetShadowPrimary: colors.pink[500],
+    insetShadowSecondary: colors.pink[200],
   },
-  {
-    name: "rose",
-    background: "#fb7185",
-    insetShadowPrimary: "#f43f5e",
-    insetShadowSecondary: "#fecdd3",
+  rose: {
+    background: colors.rose[400],
+    insetShadowPrimary: colors.rose[500],
+    insetShadowSecondary: colors.rose[200],
   },
-]
+}
