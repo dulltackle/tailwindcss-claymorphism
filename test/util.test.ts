@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest"
-import { assertClayColor, isClayColor, isClayShadow } from "~/util"
+import { assertClayColor, assertClayShadow, isClayColor, isClayShadow } from "~/util"
 
 describe("utilities that judge the type of input is ClayColor or not", () => {
   test("isClayColor() should return true when the type of input is ClayColor", ({ expect }) => {
@@ -47,5 +47,27 @@ describe("isClayShadow() judges the type of input is isClayShadow or not", () =>
     const result = isClayShadow(input)
 
     expect(result).toBeTruthy()
+  })
+  test.each([
+    {
+      input: {
+        outset: "8px 8px 16px rgba(0, 0, 0, .25)",
+        // mistyped value
+        insetPrimary: 5,
+        insetSecondary: "inset 8px 8px 16px",
+        insetModifier: "inset -2px -2px 4px #fafafa",
+      },
+    },
+    {
+      input: {
+        outset: "8px 8px 16px rgba(0, 0, 0, .25)",
+        insetPrimary: "inset -8px -8px 32px",
+        // mistyped property
+        insetThird: "inset 8px 8px 16px",
+        insetModifier: "inset -2px -2px 4px #fafafa",
+      },
+    },
+  ])("assertClayShadow() should throw an error when the type of input is not ClayShadow", ({ input }) => {
+    expect(() => assertClayShadow(input)).toThrowError("tailwindcss-clay")
   })
 })
