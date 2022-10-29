@@ -1,8 +1,9 @@
 name: Publish To NPM
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "v*"
 
 env:
   pnpm-version: 7.x.x
