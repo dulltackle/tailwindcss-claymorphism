@@ -31,7 +31,8 @@
     "typecheck": "tsc",
     "format": "prettier --write --ignore-unknown src/*",
     "dev:test": "vitest",
-    "dev:e2e": "pnpm run build && vite serve test/e2e/"
+    "dev:e2e": "pnpm run build && vite --config test/e2e/vite.config.e2e.ts",
+    "dev:e2e-build": "pnpm run build && vite build --config test/e2e/vite.config.e2e.ts"
   },
   "devDependencies": {
     "@types/lodash.merge": "^4.6.7",
