@@ -1,0 +1,51 @@
+name: Deploy static content to Pages
+
+on:
+  push:
+    branches: ["main", "chore"]
+
+  workflow_dispatch:
+
+env:
+  pnpm-version: 7.x.x
+  node-version: 16.x
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up environment
+        uses: ./.github/actions/setup
+        with:
+          pnpm-version: ${{ env.pnpm-version }}
+          node-version: ${{ env.node-version }}
+
+      - name: Build e2e page
+        run: pnpm run dev:e2e-build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: "./test/e2e/dist"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
