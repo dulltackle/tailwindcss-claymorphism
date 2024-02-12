@@ -36,8 +36,8 @@
   },
   "devDependencies": {
     "@types/lodash.merge": "^4.6.7",
-    "@typescript-eslint/eslint-plugin": "^5.30.6",
-    "@typescript-eslint/parser": "^5.30.6",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-jest": "^26.6.0",
