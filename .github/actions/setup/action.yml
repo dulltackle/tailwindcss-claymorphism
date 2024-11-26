@@ -16,7 +16,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: pnpm/action-setup@v2.4.0
+    - uses: pnpm/action-setup@v2.4.1
       with:
         version: ${{ inputs.pnpm-version }}
     - name: Use Node.js ${{ inputs.node-version }}
